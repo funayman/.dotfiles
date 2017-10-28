@@ -58,6 +58,10 @@ function update {
   fi
 }
 
+###########
+# Plugins #
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 ##########
 # Prompt #
 PROMPT="${BOLD_RED}[${BOLD_GREEN}%n@%M${RESET}:${BOLD_CYAN}%~${BOLD_RED}]${RESET}

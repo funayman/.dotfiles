@@ -39,6 +39,11 @@ alias ll='ls -l'
 export LC_ALL=en_US.utf-8
 export LANG="$LC_ALL"
 
+export GOPATH=$HOME/p/go
+export GOBIN=$GOPATH/bin
+
+export PATH=$PATH:$GOBIN
+
 ##########
 # Colors #
 # https://stackoverflow.com/a/6159885

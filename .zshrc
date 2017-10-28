@@ -33,6 +33,7 @@ fi
 
 alias grep='grep --color=auto'
 alias ll='ls -l'
+alias lls='ls -lah'
 
 ###########
 # Exports #

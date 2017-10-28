@@ -61,6 +61,15 @@ function update {
 ###########
 # Plugins #
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+# zsh-history-substring-search fix
+if [[ `uname` == 'Darwin' ]]; then
+   bindkey '^[[A' history-substring-search-up
+   bindkey '^[[B' history-substring-search-down
+else
+   bindkey "$terminfo[kcuu1]" history-substring-search-up
+   bindkey "$terminfo[kcud1]" history-substring-search-down
+fi
 
 ##########
 # Prompt #

@@ -1,4 +1,7 @@
 execute pathogen#infect()
+"current plugins:
+" - vim-gitgutter   https://github.com/airblade/vim-gitgutter
+" - RelOps          https://github.com/vim-scripts/RelOps
 
 set nocompatible                        "Apparently its necessary (https://stackoverflow.com/a/5845583)
 

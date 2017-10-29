@@ -28,16 +28,25 @@ bindkey -v
 if [[ $OS == 'Darwin' ]]; then
   alias ls='ls -G'
 else
-  alias ls='ls --color=auto'
+  alias ls='ls --color'
 fi
 
-alias grep='grep --color=auto'
+alias grep='grep --color'
 alias ll='ls -l'
 alias lls='ls -lah'
+alias less='less -r'
+
+alias df='df -h'
+alias du='du -u'
+alias dus='du -us'
+
+alias gl='git log --color=always'
+alias gd='git diff --color=always'
+alias gc='git commit'
 
 ###########
 # Exports #
-export LC_ALL=en_US.utf-8
+export LC_ALL=en_US.UTF-8
 export LANG="$LC_ALL"
 
 export GOPATH=$HOME/p/go

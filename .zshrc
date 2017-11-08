@@ -43,6 +43,7 @@ alias dus='du -us'
 alias gl='git log --color=always'
 alias gd='git diff --color=always'
 alias gc='git commit'
+alias gs='git status'
 
 ###########
 # Exports #

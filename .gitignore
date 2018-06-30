@@ -1,0 +1,3 @@
+.DS_Store
+.vim/undo/*
+!.vim/undo/README.md

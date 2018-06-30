@@ -4,7 +4,7 @@
 # Constants
 OS=$(uname) 
 declare -a PRGMS=("zsh" "git" "wget" "curl" "ffmpeg" "mplayer" "vim" "tmux" "tree")
-declare -a DIRS=(".vimundo" "p/go")
+declare -a DIRS=(".vim/undo" "p/go")
 declare -a FILES=(".tmux.conf" ".vim" ".vimrc" ".zsh" ".zshrc")
 
 
@@ -52,6 +52,5 @@ done;
 
 ###
 # Change the default shell to ZSH
-
 
 echo "BOOM! Done baby!~"

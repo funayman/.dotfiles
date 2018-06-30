@@ -39,7 +39,7 @@ set expandtab                           "Don't use actual tab character (C-v)
 "This is the most necessary thing ever. Who has time to hit ESC?!
 "Also super helpful on newer macbooks where ESC is in that stupid touch bar
 inoremap jj <ESC>l
- 
+
 "Allow saving of files as sudo when I forget to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 

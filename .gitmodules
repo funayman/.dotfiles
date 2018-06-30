@@ -13,3 +13,9 @@
 [submodule ".vim/bundle/RelOps"]
 	path = .vim/bundle/RelOps
 	url = git@github.com:vim-scripts/RelOps.git
+[submodule ".vim/bundle/vim-java-unused-imports"]
+	path = .vim/bundle/vim-java-unused-imports
+	url = git@github.com:akhaku/vim-java-unused-imports.git
+[submodule ".vim/bundle/vim-go"]
+	path = .vim/bundle/vim-go
+	url = https://github.com/fatih/vim-go.git

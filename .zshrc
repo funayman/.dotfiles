@@ -27,6 +27,7 @@ bindkey -v
 # Aliases #
 if [[ $OS == 'Darwin' ]]; then
   alias ls='ls -G'
+  alias vlc='/Volumes/Macintosh\ HD/Applications/VLC.app/Contents/MacOS/VLC --extraintf=http:logger --verbose=2 --file-logging --logfile=vlc-log.txt'
 else
   alias ls='ls --color'
 fi
@@ -40,10 +41,11 @@ alias df='df -h'
 alias du='du -u'
 alias dus='du -us'
 
-alias gl='git log --color=always'
+alias gl='git log --branches --remotes --oneline --graph --decorate'
 alias gd='git diff --color=always'
 alias gc='git commit'
 alias gs='git status'
+alias ga='git add'
 
 ###########
 # Exports #
@@ -54,6 +56,7 @@ export GOPATH=$HOME/p/go
 export GOBIN=$GOPATH/bin
 
 export PATH=$PATH:$GOBIN
+export PATH=$PATH:$HOME/p/scripts
 
 ##########
 # Colors #

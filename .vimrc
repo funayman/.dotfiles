@@ -1,14 +1,17 @@
 execute pathogen#infect()
 "current plugins:
-" - vim-gitgutter   https://github.com/airblade/vim-gitgutter
-" - RelOps          https://github.com/vim-scripts/RelOps
+" - vim-gitgutter             https://github.com/airblade/vim-gitgutter
+" - RelOps                    https://github.com/vim-scripts/RelOps
+" - vim-java-unused-imports   https://github.com/akhaku/vim-java-unused-imports
+" - vim-go                    https://github.com/fatih/vim-go
+" - vim-trailing-whitespace   https://github.com/bronson/vim-trailing-whitespace
 
 set nocompatible                        "Apparently its necessary (https://stackoverflow.com/a/5845583)
 
 set t_Co=256                            "Needed for color schemes to work right
 syntax on
 syntax enable
-"colorscheme _molokai
+colorscheme _molokai                    "Colors: _SolarizedDark  _molokai  github  solarized
 
 filetype plugin on                      "Enables filetype plugins
 filetype plugin indent on               "Indents based on filetypes

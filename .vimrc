@@ -6,6 +6,7 @@ execute pathogen#infect()
 " - vim-go                    https://github.com/fatih/vim-go
 " - vim-trailing-whitespace   https://github.com/bronson/vim-trailing-whitespace
 " - vim-airline               https://github.com/vim-airline/vim-airline
+" - vim-airline-themes        https://github.com/vim-airline/vim-airline-themes
 
 set nocompatible                        "Apparently its necessary (https://stackoverflow.com/a/5845583)
 
@@ -54,6 +55,7 @@ let g:go_highlight_build_constraints = 1
 au Filetype go nnoremap <leader>gr :GoRun %<CR>
 
 "vim-airline config
+let g:airline_theme='turtles'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'

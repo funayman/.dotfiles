@@ -10,6 +10,7 @@ execute pathogen#infect()
 " - supertab                  https://github.com/ervandew/supertab
 " - auto=pairs                https://github.com/jiangmiao/auto-pairs
 " - tagbar                    https://github.com/majutsushi/tagbar
+" - NERDTree                  https://github.com/scrooloose/nerdtree
 
 set nocompatible                        "Apparently its necessary (https://stackoverflow.com/a/5845583)
 
@@ -75,3 +76,10 @@ nmap <leader>/ :TComment <CR>
 
 "tagbar config
 nmap <F8> :TagbarToggle<CR>
+
+"nerdtree config
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1                                                     "show hidden files
+let NERDTreeIgnore=['\.swp']                                                 "ignore swap files
+let NERDTreeMapOpenInTab='<ENTER>'                                           "open files from NERDTree in new tab
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif  "open a NERDTree automatically when vim starts up if no files were specified

@@ -63,7 +63,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 
 "supertab config
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "context"  "uses text preceding to decide which type of completion to attempt
 
 "a few quick cuts
 let mapleader=","                       "Custom mapping using ','

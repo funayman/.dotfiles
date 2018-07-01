@@ -11,7 +11,7 @@ set nocompatible                        "Apparently its necessary (https://stack
 set t_Co=256                            "Needed for color schemes to work right
 syntax on
 syntax enable
-colorscheme _molokai                    "Colors: _SolarizedDark  _molokai  github  solarized
+colorscheme turtles
 
 filetype plugin on                      "Enables filetype plugins
 filetype plugin indent on               "Indents based on filetypes

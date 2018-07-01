@@ -57,16 +57,16 @@ let g:go_highlight_build_constraints = 1
 au Filetype go nnoremap <leader>gr :GoRun %<CR>
 
 "vim-airline config
-let g:airline_theme='turtles'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'turtles'
+let g:airline_powerline_fonts = 1                       "displays arrows, terminal must have a powerline font
+let g:airline#extensions#tabline#enabled = 1            "automatically display all buffers (even one tab)
 let g:airline#extensions#tabline#formatter = 'default'
 
 "supertab config
 let g:SuperTabDefaultCompletionType = "context"  "uses text preceding to decide which type of completion to attempt
 
-"a few quick cuts
-let mapleader=","                       "Custom mapping using ','
+"a few quick cuts custom mapping using ','
+let mapleader=","
 nmap <leader>p :set paste! <CR> :set nu! <CR>
 nmap <leader>nn :set nu! <CR>
 nmap <leader>w :w! <CR>

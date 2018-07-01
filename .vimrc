@@ -7,6 +7,7 @@ execute pathogen#infect()
 " - vim-trailing-whitespace   https://github.com/bronson/vim-trailing-whitespace
 " - vim-airline               https://github.com/vim-airline/vim-airline
 " - vim-airline-themes        https://github.com/vim-airline/vim-airline-themes
+" - supertab                  https://github.com/ervandew/supertab
 
 set nocompatible                        "Apparently its necessary (https://stackoverflow.com/a/5845583)
 
@@ -59,3 +60,13 @@ let g:airline_theme='turtles'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
+
+"supertab config
+let g:SuperTabDefaultCompletionType = "context"
+
+"a few quick cuts
+let mapleader=","                       "Custom mapping using ','
+nmap <leader>p :set paste! <CR> :set nu! <CR>
+nmap <leader>nn :set nu! <CR>
+nmap <leader>w :w! <CR>
+nmap <leader>/ :TComment <CR>

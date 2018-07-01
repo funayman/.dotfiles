@@ -8,6 +8,7 @@ execute pathogen#infect()
 " - vim-airline               https://github.com/vim-airline/vim-airline
 " - vim-airline-themes        https://github.com/vim-airline/vim-airline-themes
 " - supertab                  https://github.com/ervandew/supertab
+" - auto=pairs                https://github.com/jiangmiao/auto-pairs
 
 set nocompatible                        "Apparently its necessary (https://stackoverflow.com/a/5845583)
 

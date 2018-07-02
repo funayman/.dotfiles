@@ -94,7 +94,9 @@ fpath=($HOME/.zsh/zsh-completions $fpath)
 fpath=($fpath $HOME/.zsh/func)
 typeset -U fpath
 
+
 ##########
 # Prompt #
 PROMPT="╭─${BOLD_RED}[${BOLD_GREEN}%n@%M${RESET}:${BOLD_CYAN}%~${BOLD_RED}]${RESET}
 ╰─> "
+RPROMPT="%~"

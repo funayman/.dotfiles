@@ -53,6 +53,6 @@ prompt_build() {
 }
 
 function prompt_precmd() {
-PROMPT="╭─${BOLD_RED}[${BOLD_GREEN}%n${BOLD_WHITE}@${BOLD_GREEN}%M${BOLD_RED}] ${BOLD_CYAN}$(prompt_build)${BOLD_WHITE}
-╰─> "
+PROMPT="╭─${BOLD_RED}[${BOLD_GREEN}%n${BOLD_WHITE}@${BOLD_GREEN}%m${BOLD_RED}] ${BOLD_CYAN}$(prompt_build)${BOLD_WHITE}
+╰─>${RESET} "
 }

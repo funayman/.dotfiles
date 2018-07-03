@@ -18,37 +18,12 @@ CROSS="\u2718"
 LIGHTNING="\u26a1"
 GEAR="\u2699"
 
-# Begin a segment
-# Takes two arguments, background and foreground. Both can be omitted,
-# rendering default background/foreground.
-prompt_segment() {
-  local bg fg
-  [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
-  [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
-  if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
-    print -n "%{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%}"
-  else
-    print -n "%{$bg%}%{$fg%}"
-  fi
-  CURRENT_BG=$1
-  [[ -n $3 ]] && print -n $3
-}
+prompt_build() {
+  vcs_info
 
-# End the prompt, closing any open segments
-prompt_end() {
-  if [[ -n $CURRENT_BG ]]; then
-    print -n "%{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
-  else
-    print -n "%{%k%}"
-  fi
-  print -n "%{%f%}"
-  CURRENT_BG=''
-}
-
-# Git: branch/detached head, dirty status
-prompt_git() {
-  local color ref
-
+  local PDISPLAY=''
+  ##
+  # Git Stuff
   is_dirty() {
     test -n "$(git status --porcelain --ignore-submodules)"
   }
@@ -67,29 +42,17 @@ prompt_git() {
     else
       ref="$DETACHED ${ref/.../}"
     fi
-    prompt_segment $color $PRIMARY_FG
-    print -n " $ref"
+    PDISPLAY="$PDISPLAY $SEGMENT_SEPARATOR ${ref}"
   fi
-}
 
-# Dir: current working directory
-prompt_dir() {
-  prompt_segment blue $PRIMARY_FG ' %~ '
-}
+  ##
+  # Current Dir (truncate if necessary)
+  PDISPLAY="$PDISPLAY $SEGMENT_SEPARATOR %~ "
 
-prompt_build() {
-  RETVAL=$?
-  CURRENT_BG='NONE'
-  prompt_end
-  prompt_git
-  prompt_dir
-  CURRENT_BG='NONE'
-  prompt_segment
+  print -n "${PDISPLAY}"
 }
 
 function prompt_precmd() {
-  vcs_info
-  # PROMPT='%{%f%b%k%}$(prompt_agnoster_main) '
-PROMPT="$(prompt_build)
->"
+PROMPT="╭─${BOLD_RED}[${BOLD_GREEN}%n${BOLD_WHITE}@${BOLD_GREEN}%M${BOLD_RED}] ${BOLD_CYAN}$(prompt_build)${BOLD_WHITE}
+╰─> "
 }

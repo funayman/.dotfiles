@@ -20,8 +20,10 @@ GEAR="\u2699"
 
 prompt_build() {
   vcs_info
+  local TERMWIDTH
+  (( TERMWIDTH = ${COLUMNS} - 1 ))
 
-  local PDISPLAY=''
+  local GIT_DISPLAY
   ##
   # Git Stuff
   is_dirty() {
@@ -32,27 +34,42 @@ prompt_build() {
   if [[ -n "$ref" ]]; then
     if is_dirty; then
       color=yellow
-      ref="${ref} $PLUSMINUS"
+      ref="$PLUSMINUS ${ref}"
     else
       color=green
-      ref="${ref} "
+      ref=" ${ref}"
     fi
     if [[ "${ref/.../}" == "$ref" ]]; then
-      ref="$BRANCH $ref"
+      ref="$ref $BRANCH"
     else
-      ref="$DETACHED ${ref/.../}"
+      ref="${ref/.../} $DETACHED"
     fi
-    PDISPLAY="$PDISPLAY $SEGMENT_SEPARATOR ${ref}"
+    GIT_DISPLAY="$SEGMENT_SEPARATOR${ref}"
   fi
 
   ##
   # Current Dir (truncate if necessary)
-  PDISPLAY="$PDISPLAY $SEGMENT_SEPARATOR %~ "
+  local FILLBAR=""
+  local PWDLEN=""
+  local SPACE=" "
 
+  local git_expand="$(print $GIT_DISPLAY)"
+  local promptsize=${#${(%):--[%n@%m]--$git_expand--}}
+  local pwdsize=${#${(%):-%~---}}
+
+  if [[ "$promptsize + $pwdsize" -gt $TERMWIDTH ]]; then
+    ((PWDLEN=$TERMWIDTH - $promptsize - 4)) else
+    FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize) - 1))..${SPACE}.)}"
+  fi
+
+  PDISPLAY="${(e)FILLBAR}$GIT_DISPLAY $SEGMENT_SEPARATOR %$PWDLEN<...<%~%<< "
+
+  # $PR_SHIFT_IN$PR_HBAR$PR_CYAN$PR_HBAR${(e)PR_FILLBAR}$PR_BLUE$PR_HBAR$PR_SHIFT_OUT($PR_MAGENTA%$PR_PWDLEN<...<%~%<<$PR_BLUE)
   print -n "${PDISPLAY}"
 }
 
 function prompt_precmd() {
-PROMPT="╭─${BOLD_RED}[${BOLD_GREEN}%n${BOLD_WHITE}@${BOLD_GREEN}%m${BOLD_RED}] ${BOLD_CYAN}$(prompt_build)${BOLD_WHITE}
+PROMPT="╭─${BOLD_RED}[${BOLD_GREEN}%n${BOLD_WHITE}@${BOLD_GREEN}%m${BOLD_RED}] ${RESET}$(prompt_build)${RESET}${BOLD_WHITE}─╮
 ╰─>${RESET} "
+RPROMPT="%D{%a,%b%d} ─╯"
 }

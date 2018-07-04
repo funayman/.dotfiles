@@ -64,7 +64,6 @@ prompt_build() {
 
   PDISPLAY="${(e)FILLBAR}$GIT_DISPLAY %f%F{blue}$SEGMENT_SEPARATOR%f%F{black}%k%K{blue} %$PWDLEN<...<%~%<< "
 
-  # $PR_SHIFT_IN$PR_HBAR$PR_CYAN$PR_HBAR${(e)PR_FILLBAR}$PR_BLUE$PR_HBAR$PR_SHIFT_OUT($PR_MAGENTA%$PR_PWDLEN<...<%~%<<$PR_BLUE)
   print -n "${PDISPLAY}"
 }
 

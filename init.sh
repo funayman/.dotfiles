@@ -39,7 +39,7 @@ fi
 
 ###
 # Grab all git repos
-git clone git@github.com:funayman/dotfiles $HOME/.dotfiles
+git clone git@github.com:funayman/.dotfiles $HOME/.dotfiles
 cd $HOME/.dotfiles
 git submodule init && git submodule update
 

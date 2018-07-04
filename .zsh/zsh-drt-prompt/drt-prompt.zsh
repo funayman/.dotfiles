@@ -62,7 +62,7 @@ prompt_build() {
     FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize) - 1))..${SPACE}.)}"
   fi
 
-  PDISPLAY="${(e)FILLBAR}$GIT_DISPLAY %f%F{blue}$SEGMENT_SEPARATOR%f%F{black}%k%K{blue} %$PWDLEN<...<%~%<< "
+  PDISPLAY="${(e)FILLBAR}$GIT_DISPLAY %f%F{blue}$SEGMENT_SEPARATOR%f${BOLD_WHITE}%k%K{blue} %$PWDLEN<...<%~%<< "
 
   print -n "${PDISPLAY}"
 }

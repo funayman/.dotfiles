@@ -44,7 +44,8 @@ prompt_build() {
     else
       ref="${ref/.../} $DETACHED"
     fi
-    GIT_DISPLAY="$SEGMENT_SEPARATOR${ref}"
+    local git_expand="$(print $SEGMENT_SEPARATOR${ref})"
+    GIT_DISPLAY="%f%F{$color}$SEGMENT_SEPARATOR%f%F{black}%k%K{$color}${ref}"
   fi
 
   ##
@@ -53,7 +54,6 @@ prompt_build() {
   local PWDLEN=""
   local SPACE=" "
 
-  local git_expand="$(print $GIT_DISPLAY)"
   local promptsize=${#${(%):--[%n@%m]--$git_expand--}}
   local pwdsize=${#${(%):-%~---}}
 
@@ -62,7 +62,7 @@ prompt_build() {
     FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize) - 1))..${SPACE}.)}"
   fi
 
-  PDISPLAY="${(e)FILLBAR}$GIT_DISPLAY $SEGMENT_SEPARATOR %$PWDLEN<...<%~%<< "
+  PDISPLAY="${(e)FILLBAR}$GIT_DISPLAY %f%F{blue}$SEGMENT_SEPARATOR%f%F{black}%k%K{blue} %$PWDLEN<...<%~%<< "
 
   # $PR_SHIFT_IN$PR_HBAR$PR_CYAN$PR_HBAR${(e)PR_FILLBAR}$PR_BLUE$PR_HBAR$PR_SHIFT_OUT($PR_MAGENTA%$PR_PWDLEN<...<%~%<<$PR_BLUE)
   print -n "${PDISPLAY}"

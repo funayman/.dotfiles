@@ -6,7 +6,7 @@ set -e
 # Constants
 OS=$(uname)
 declare -a PRGMS=("zsh" "git" "wget" "curl" "ffmpeg" "mplayer" "vim" "tmux" "tree" "youtube-dl" "pandoc" "pandoc-citeproc")
-declare -a DIRS=(".vim/undo" "p/go")
+declare -a DIRS=("p/go")
 declare -a FILES=(".tmux.conf" ".vim" ".vimrc" ".zsh" ".zshrc")
 
 

@@ -70,5 +70,5 @@ prompt_build() {
 function prompt_precmd() {
 PROMPT="${BOLD_WHITE}╭─${BOLD_RED}[${BOLD_GREEN}%n${BOLD_WHITE}@${BOLD_GREEN}%m${BOLD_RED}] ${RESET}$(prompt_build)${RESET}${BOLD_WHITE}─╮
 ╰─>${RESET}%k%f"
-RPROMPT="${BOLD_WHITE}%D{%a,%b%d} @ %D{%H:%m} ─╯"
+RPROMPT="${BOLD_WHITE}%D{%a,%b%d} @ %D{%T} ─╯${RESET}"
 }

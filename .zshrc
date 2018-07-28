@@ -42,6 +42,7 @@ alias du='du -u'
 alias dus='du -us'
 
 alias gl='git log --branches --remotes --oneline --graph --decorate'
+alias glw='git log --branches --remotes --oneline --graph --decorate --after $(date -v-7d +%Y-%m-%d)'
 alias gd='git diff --color=always'
 alias gc='git commit'
 alias gs='git status'

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 ###
 # Constants
 OS=$(uname)
@@ -19,27 +21,34 @@ fi
 
 ###
 # Directory Setup
+echo -n "making directories..."
 for DIR in ${DIRS[@]}; do
   if [ ! -d $HOME/$DIR ]; then
     mkdir -p $HOME/$DIR
+    echo -n" $DIR"
   fi
 done
+echo
 
 
 ###
 # Install apps
+echo "update base system..."
 if [ $OS == 'Darwin' ]; then
   brew update && brew upgrade
   brew install ${PRGMS[@]}
 else
-  apt-get update && apt-get -y upgrade
-  apt-get -y install ${PRGMS[@]}
+  sudo apt-get update && apt-get -y upgrade
+  sudo apt-get -y install ${PRGMS[@]}
 fi
 
 
 ###
 # Grab all git repos
-git clone git@github.com:funayman/.dotfiles $HOME/.dotfiles
+echo "init and update git submodules..."
+if [ -d $HOME/.dotfiles  ]
+  git clone git@github.com:funayman/.dotfiles $HOME/.dotfiles
+fi
 cd $HOME/.dotfiles
 git submodule init && git submodule update
 

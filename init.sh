@@ -25,7 +25,7 @@ echo -n "making directories..."
 for DIR in ${DIRS[@]}; do
   if [ ! -d $HOME/$DIR ]; then
     mkdir -p $HOME/$DIR
-    echo -n" $DIR"
+    echo -n " $DIR"
   fi
 done
 echo
@@ -38,7 +38,7 @@ if [ $OS == 'Darwin' ]; then
   brew update && brew upgrade
   brew install ${PRGMS[@]}
 else
-  sudo apt-get update && apt-get -y upgrade
+  sudo apt-get update && sudo apt-get -y upgrade
   sudo apt-get -y install ${PRGMS[@]}
 fi
 
@@ -46,7 +46,7 @@ fi
 ###
 # Grab all git repos
 echo "init and update git submodules..."
-if [ -d $HOME/.dotfiles  ]
+if [ ! -d $HOME/.dotfiles  ]; then
   git clone git@github.com:funayman/.dotfiles $HOME/.dotfiles
 fi
 cd $HOME/.dotfiles

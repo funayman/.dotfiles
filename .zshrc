@@ -29,7 +29,7 @@ if [[ $OS == 'Darwin' ]]; then
   alias ls='ls -G'
   alias vlc='/Volumes/Macintosh\ HD/Applications/VLC.app/Contents/MacOS/VLC --extraintf=http:logger --verbose=2 --file-logging --logfile=vlc-log.txt'
 else
-  alias ls='ls --color'
+  alias ls='ls --color -N'
 fi
 
 alias grep='grep --color'

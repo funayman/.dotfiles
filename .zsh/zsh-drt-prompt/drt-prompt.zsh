@@ -20,6 +20,8 @@ GEAR="\u2699"
 
 # Days of Week Kanji
 DAY_KANJI=('月' '火' '水' '木' '金' '土' '日')
+KANJI_COLOR=(${BOLD_WHITE} ${BOLD_RED} ${BOLD_BLUE} ${BOLD_GREEN} ${BOLD_YELLOW} ${BOLD_CYAN} ${BOLD_MAGENTA})
+INDEX=$(date "+%u")
 
 prompt_build() {
   vcs_info
@@ -74,5 +76,5 @@ function prompt_precmd() {
 PROMPT="${BOLD_WHITE}╭─${BOLD_RED}[${BOLD_GREEN}%n${BOLD_WHITE}@${BOLD_GREEN}%m${BOLD_RED}] ${RESET}$(prompt_build)${RESET}${BOLD_WHITE}─╮
 ╰─>${RESET}%k%f"
 # RPROMPT="${BOLD_WHITE}%D{%a,%b%d} @ %D{%T} ─╯${RESET}"
-RPROMPT="${BLUE}%D{%Y}年%D{%m}月%D{%d}日（$DAY_KANJI[$(date "+%u")]）${RED}%D{%T}${BOLD_WHITE} ─╯${RESET}"
+RPROMPT="${WHITE}%D{%Y}年%D{%m}月%D{%d}日（$KANJI_COLOR[$INDEX]$DAY_KANJI[$INDEX]${WHITE}）${RED}%D{%T}${BOLD_WHITE} ─╯${RESET}"
 }

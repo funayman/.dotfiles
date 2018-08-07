@@ -18,6 +18,9 @@ CROSS="\u2718"
 LIGHTNING="\u26a1"
 GEAR="\u2699"
 
+# Days of Week Kanji
+DAY_KANJI=('月' '火' '水' '木' '金' '土' '日')
+
 prompt_build() {
   vcs_info
   local TERMWIDTH
@@ -70,5 +73,6 @@ prompt_build() {
 function prompt_precmd() {
 PROMPT="${BOLD_WHITE}╭─${BOLD_RED}[${BOLD_GREEN}%n${BOLD_WHITE}@${BOLD_GREEN}%m${BOLD_RED}] ${RESET}$(prompt_build)${RESET}${BOLD_WHITE}─╮
 ╰─>${RESET}%k%f"
-RPROMPT="${BOLD_WHITE}%D{%a,%b%d} @ %D{%T} ─╯${RESET}"
+# RPROMPT="${BOLD_WHITE}%D{%a,%b%d} @ %D{%T} ─╯${RESET}"
+RPROMPT="${BLUE}%D{%Y}年%D{%m}月%D{%d}日（$DAY_KANJI[$(date "+%u")]）${RED}%D{%T}${BOLD_WHITE} ─╯${RESET}"
 }

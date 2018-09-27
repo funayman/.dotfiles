@@ -18,6 +18,7 @@ set t_Co=256                            "Needed for color schemes to work right
 syntax on
 syntax enable
 colorscheme turtles
+hi Normal guibg=NONE ctermbg=NONE       "Allow for transparent background
 
 filetype plugin on                      "Enables filetype plugins
 filetype plugin indent on               "Indents based on filetypes

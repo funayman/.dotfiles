@@ -11,6 +11,7 @@ execute pathogen#infect()
 " - auto=pairs                https://github.com/jiangmiao/auto-pairs
 " - tagbar                    https://github.com/majutsushi/tagbar
 " - NERDTree                  https://github.com/scrooloose/nerdtree
+" - vim-javacomplete2         https://github.com/artur-shaik/vim-javacomplete2
 
 set nocompatible                        "Apparently its necessary (https://stackoverflow.com/a/5845583)
 
@@ -41,7 +42,6 @@ set ignorecase                          "Case insensitive search
 set tabstop=2                           "Set Tabs to proper location
 set shiftwidth=2                        "Indenting is X spaces
 set expandtab                           "Don't use actual tab character (C-v)
-
 
 "This is the most necessary thing ever. Who has time to hit ESC?!
 "Also super helpful on newer macbooks where ESC is in that stupid touch bar
@@ -84,3 +84,6 @@ let NERDTreeShowHidden=1                                                     "sh
 let NERDTreeIgnore=['\.swp']                                                 "ignore swap files
 let NERDTreeMapOpenInTab='<ENTER>'                                           "open files from NERDTree in new tab
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif  "open a NERDTree automatically when vim starts up if no files were specified
+
+"javacomplete2 config
+autocmd FileType java setlocal omnifunc=javacomplete#Complete

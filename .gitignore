@@ -1,5 +1,5 @@
 .DS_Store
-.vim/undo/*
-!.vim/undo/README.md
+vim/undo/*
+!vim/undo/README.md
 .netrwhist
 *.swp

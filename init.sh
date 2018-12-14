@@ -7,7 +7,7 @@ set -e
 OS=$(uname)
 declare -a PRGMS=("zsh" "git" "wget" "curl" "ffmpeg" "mplayer" "vim" "tmux" "tree" "youtube-dl" "pandoc" "pandoc-citeproc")
 declare -a DIRS=("p/go/{src,pkg,bin}")
-declare -a FILES=(".tmux.conf" ".vim" ".vimrc" ".zsh" ".zshrc")
+declare -a FILES=("tmux.conf" "vim" "vimrc" "zsh" "zshrc")
 
 
 ###
@@ -59,7 +59,7 @@ for FILE in ${FILES[@]}; do
     echo "Found $FILE in home directory... moving to $HOME/$FILE.backup"
     mv $HOME/$FILE $HOME/$FILE.backup
   fi
-  ln -s $HOME/.dotfiles/$FILE $HOME/$FILE
+  ln -s $HOME/.dotfiles/$FILE "$HOME/.$FILE"
 done;
 
 

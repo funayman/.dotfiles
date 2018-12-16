@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/vim-javacomplete2"]
 	path = vim/bundle/vim-javacomplete2
 	url = https://github.com/artur-shaik/vim-javacomplete2.git
+[submodule "vim/bundle/dracula-theme"]
+	path = vim/bundle/dracula-theme
+	url = git@github.com:dracula/vim.git

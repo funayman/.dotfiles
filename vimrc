@@ -13,13 +13,18 @@ execute pathogen#infect()
 " - NERDTree                  https://github.com/scrooloose/nerdtree
 " - vim-javacomplete2         https://github.com/artur-shaik/vim-javacomplete2
 
+"extra themes:
+" - Turtles   https://github.com/kadekillary/Turtles
+" - Dracula   https://github.com/dracula/vim
+
 set nocompatible                        "Apparently its necessary (https://stackoverflow.com/a/5845583)
 
 set t_Co=256                            "Needed for color schemes to work right
+set termguicolors                       "uses highlight-guifg and highlight-guibg attributes (24-bit color)
 syntax on
 syntax enable
 colorscheme turtles
-hi Normal guibg=NONE ctermbg=NONE       "Allow for transparent background
+"hi Normal guibg=NONE ctermbg=NONE       "Allow for transparent background
 
 filetype plugin on                      "Enables filetype plugins
 filetype plugin indent on               "Indents based on filetypes

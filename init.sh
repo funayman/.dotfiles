@@ -36,6 +36,7 @@ echo
 echo "update base system..."
 if [ $OS == 'Darwin' ]; then
   brew update && brew upgrade
+  brew tap homebrew/cask-fonts
   brew install ${PRGMS[@]}
 else
   sudo apt-get update && sudo apt-get -y upgrade

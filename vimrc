@@ -1,6 +1,5 @@
 execute pathogen#infect()
 "current plugins:
-" - vim-gitgutter             https://github.com/airblade/vim-gitgutter
 " - RelOps                    https://github.com/vim-scripts/RelOps
 " - vim-java-unused-imports   https://github.com/akhaku/vim-java-unused-imports
 " - vim-go                    https://github.com/fatih/vim-go

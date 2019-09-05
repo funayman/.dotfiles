@@ -48,6 +48,9 @@ alias gc='git commit'
 alias gs='git status'
 alias ga='git add'
 
+##################
+# Docker Aliases #
+alias fdroid='docker run --rm -u $(id -u):$(id -g) -v $(pwd):/repo registry.gitlab.com/fdroid/docker-executable-fdroidserver:latest'
 ###########
 # Exports #
 export LC_ALL=en_US.UTF-8
@@ -58,6 +61,10 @@ export GOBIN=$GOPATH/bin
 
 export PATH=$PATH:$GOBIN
 export PATH=$PATH:$HOME/p/scripts
+
+if [[ $OS == 'Darwin' ]]; then
+  # export PATH=$PATH:$HOME/Library/Python/2.7/bin
+fi
 
 ##########
 # Colors #

@@ -25,22 +25,18 @@ bindkey -v
 
 ###########
 # Aliases #
-if [[ $OS == 'Darwin' ]]; then
-  alias ls='ls -G'
-  alias vlc='/Volumes/Macintosh\ HD/Applications/VLC.app/Contents/MacOS/VLC --extraintf=http:logger --verbose=2 --file-logging --logfile=vlc-log.txt'
-else
-  alias ls='ls --color -N'
-fi
 
+# coreutils
 alias grep='grep --color'
+alias ls='ls --color -N'
 alias ll='ls -l'
 alias lls='ls -lah'
 alias less='less -r'
-
 alias df='df -h'
-alias du='du -u'
-alias dus='du -us'
+alias du='du -h'
+alias dus='du -hs'
 
+# git
 alias gl='git log --branches --remotes --oneline --graph --decorate'
 alias glw='git log --branches --remotes --oneline --graph --decorate --after $(date -v-7d +%Y-%m-%d)'
 alias gd='git diff --color=always'
@@ -48,9 +44,18 @@ alias gc='git commit'
 alias gs='git status'
 alias ga='git add'
 
+# macOS-like copy/paste
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
+# networking help (cyber plumber)
+alias psg='ps -ef | grep -i $1'
+alias ssg='ss -natp | grep -i $1'
+
 ##################
 # Docker Aliases #
 alias fdroid='docker run --rm -u $(id -u):$(id -g) -v $(pwd):/repo registry.gitlab.com/fdroid/docker-executable-fdroidserver:latest'
+
 ###########
 # Exports #
 export LC_ALL=en_US.UTF-8
@@ -61,10 +66,6 @@ export GOBIN=$GOPATH/bin
 
 export PATH=$PATH:$GOBIN
 export PATH=$PATH:$HOME/p/scripts
-
-if [[ $OS == 'Darwin' ]]; then
-  # export PATH=$PATH:$HOME/Library/Python/2.7/bin
-fi
 
 ##########
 # Colors #
@@ -77,31 +78,18 @@ eval RESET='%{$reset_color%}'
 
 #############
 # Functions #
-function update {
-  if [[ $OS == 'Darwin' ]]; then
-    brew update && brew upgrade
-  else
-    apt-get update && apt-get upgrade
-  fi
-}
 
 ###########
 # Plugins #
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-  # zsh-history-substring-search fix
-  if [[ `uname` == 'Darwin' ]]; then
-     bindkey '^[[A' history-substring-search-up
-     bindkey '^[[B' history-substring-search-down
-  else
-     bindkey "$terminfo[kcuu1]" history-substring-search-up
-     bindkey "$terminfo[kcud1]" history-substring-search-down
-  fi
+# zsh-history-substring-search fix
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 # zsh-completions
 fpath=($HOME/.zsh/zsh-completions $fpath)
 fpath=($fpath $HOME/.zsh/func)
 typeset -U fpath
-
 
 ##########
 # Prompt #

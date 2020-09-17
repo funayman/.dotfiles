@@ -36,6 +36,11 @@ for FILE in ${FILES[@]}; do
   ln -s $HOME/.dotfiles/$FILE "$HOME/.$FILE"
 done;
 
+###
+# Make ZSH the default shell
+if [[ $(basename $SHELL) != 'zsh' ]]; then
+  sudo chsh -s $(which zsh) $USER
+fi
 
 ###
 # Change the default shell to ZSH

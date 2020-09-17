@@ -44,9 +44,10 @@ alias gc='git commit'
 alias gs='git status'
 alias ga='git add'
 
-# macOS-like copy/paste
+# macOS-like
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+alias open='xdg-open'
 
 # networking help (cyber plumber)
 alias psg='ps -ef | grep -i $1'

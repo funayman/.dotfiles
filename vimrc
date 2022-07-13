@@ -47,6 +47,8 @@ set tabstop=2                           "Set Tabs to proper location
 set shiftwidth=2                        "Indenting is X spaces
 set expandtab                           "Don't use actual tab character (C-v)
 
+set nofoldenable                        "Don't fold collapsable sections
+
 "This is the most necessary thing ever. Who has time to hit ESC?!
 "Also super helpful on newer macbooks where ESC is in that stupid touch bar
 inoremap jj <ESC>l

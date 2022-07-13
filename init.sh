@@ -34,12 +34,20 @@ for FILE in ${FILES[@]}; do
     mv -v $HOME/.$FILE $HOME/.$FILE.backup
   fi
   ln -s $HOME/.dotfiles/$FILE "$HOME/.$FILE"
-done;
+done
+# Link Config dirs
+for C_DIR in $(ls -d $HOME/.dotfiles/config/*/); do
+  F_DIR = ${C_DIR%/}
+  B_DIR = $(basename $(dirname "${C_DIR}"))
+  ln -s "${F_DIR}" "${HOME}/.config/${B_DIR}"
+done
+# Add Fonts
+ln -s $HOME/.dotfiles/.fonts $HOME/.fonts
 
 ###
 # Make ZSH the default shell
 if [[ $(basename $SHELL) != 'zsh' ]]; then
-  sudo chsh -s $(which zsh) $USER
+  sudo chsh -s $(command -V zsh) $USER
 fi
 
 ###

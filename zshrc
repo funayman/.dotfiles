@@ -65,9 +65,10 @@ export LANG="$LC_ALL"
 export GOPATH=$HOME/p/go
 export GOBIN=$GOPATH/bin
 
-export PATH=$PATH:$GOBIN
-export PATH=$PATH:$HOME/p/scripts
+export PATH=$GOBIN:$PATH
+export PATH=$HOME/p/scripts:$PATH
 
+export EDITOR=vim
 ##########
 # Colors #
 # https://stackoverflow.com/a/6159885

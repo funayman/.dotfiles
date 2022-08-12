@@ -5,8 +5,8 @@ local OS=$(uname)
 ###########
 # History #
 HISTFILE=$HOME/.histfile
-HISTSIZE=2000
-SAVEHIST=2000
+HISTSIZE=20000
+SAVEHIST=20000
 
 ############
 # Autoload #
@@ -32,14 +32,15 @@ else
   alias ls='ls --color -N'
 fi
 
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
 alias grep='grep --color'
 alias ll='ls -l'
 alias lls='ls -lah'
 alias less='less -r'
 
 alias df='df -h'
-alias du='du -u'
-alias dus='du -us'
 
 alias gl='git log --branches --remotes --oneline --graph --decorate'
 alias glw='git log --branches --remotes --oneline --graph --decorate --after $(date -v-7d +%Y-%m-%d)'
@@ -51,16 +52,20 @@ alias ga='git add'
 ##################
 # Docker Aliases #
 alias fdroid='docker run --rm -u $(id -u):$(id -g) -v $(pwd):/repo registry.gitlab.com/fdroid/docker-executable-fdroidserver:latest'
+
 ###########
 # Exports #
 export LC_ALL=en_US.UTF-8
 export LANG="$LC_ALL"
 
+export GOHOME=/usr/lib/go-1.18
 export GOPATH=$HOME/p/go
 export GOBIN=$GOPATH/bin
 
-export PATH=$PATH:$GOBIN
+export PATH=/opt/firefox:$PATH
+export PATH=$PATH:$GOBIN:$GOHOME/bin
 export PATH=$PATH:$HOME/p/scripts
+export PATH=$PATH:$HOME/.npm/packages/bin
 
 if [[ $OS == 'Darwin' ]]; then
   # export PATH=$PATH:$HOME/Library/Python/2.7/bin
@@ -81,7 +86,7 @@ function update {
   if [[ $OS == 'Darwin' ]]; then
     brew update && brew upgrade
   else
-    apt-get update && apt-get upgrade
+    sudo apt-get update && sudo apt-get upgrade
   fi
 }
 
@@ -102,7 +107,13 @@ fpath=($HOME/.zsh/zsh-completions $fpath)
 fpath=($fpath $HOME/.zsh/func)
 typeset -U fpath
 
+# kubernetes autocomplete
+[[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
 
 ##########
 # Prompt #
 source $HOME/.zsh/zsh-drt-prompt/drt-prompt.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

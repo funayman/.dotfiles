@@ -49,3 +49,9 @@
 [submodule "vim/bundle/dracula-theme"]
 	path = vim/bundle/dracula-theme
 	url = git@github.com:dracula/vim.git
+[submodule "vim-terraform"]
+	path = vim-terraform
+	url = git@github.com:hashivim/vim-terraform.git
+[submodule "vim/bundle/vim-terraform"]
+	path = vim/bundle/vim-terraform
+	url = git@github.com:hashivim/vim-terraform.git

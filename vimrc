@@ -91,3 +91,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif  "op
 
 "javacomplete2 config
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+"vim-terraform
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1

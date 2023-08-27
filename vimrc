@@ -9,7 +9,6 @@ execute pathogen#infect()
 " - supertab                  https://github.com/ervandew/supertab
 " - auto=pairs                https://github.com/jiangmiao/auto-pairs
 " - tagbar                    https://github.com/majutsushi/tagbar
-" - NERDTree                  https://github.com/scrooloose/nerdtree
 " - vim-javacomplete2         https://github.com/artur-shaik/vim-javacomplete2
 
 "extra themes:
@@ -29,8 +28,7 @@ filetype plugin on                      "Enables filetype plugins
 filetype plugin indent on               "Indents based on filetypes
 
 set undofile                            "Allow for undoing AFTER a file is :wq
-set undodir=$HOME/.vim/undo             "Dir used for undo
-
+set undodir=$HOME/.config/nvim/undo     "Dir used for undo
 
 set wildmenu                            "Menu tab-completion on the command line
 set number                              "Display line numbers

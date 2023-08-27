@@ -69,6 +69,9 @@ export PATH=$GOBIN:$PATH
 export PATH=$HOME/p/scripts:$PATH
 
 export EDITOR=vim
+
+export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/drt/.local/share/flatpak/exports/share
+
 ##########
 # Colors #
 # https://stackoverflow.com/a/6159885
@@ -86,8 +89,10 @@ eval RESET='%{$reset_color%}'
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 # zsh-history-substring-search fix
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+# bindkey '^[[A' history-substring-search-up
+# bindkey '^[[B' history-substring-search-down
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
 # zsh-completions
 fpath=($HOME/.zsh/zsh-completions $fpath)
 fpath=($fpath $HOME/.zsh/func)

@@ -3,3 +3,9 @@ vim/undo/*
 !vim/undo/README.md
 .netrwhist
 *.swp
+
+themes/**
+!themes/install.sh
+
+icons/**
+!icons/install.sh

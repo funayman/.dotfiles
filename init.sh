@@ -4,7 +4,7 @@ set -e
 ###
 # Constants
 OS=$(uname)
-declare -a PRGMS=("zsh" "git" "wget" "curl" "ffmpeg" "mplayer" "vim" "tmux" "tree" "youtube-dl")
+declare -a PRGMS=("zsh" "git" "wget" "curl" "ffmpeg" "mpv" "neovim" "tmux" "tree" "ydlp")
 declare -a DIRS=("p/go/{src,pkg,bin}" "p/scripts")
 declare -a FILES=("tmux.conf" "vim" "vimrc" "zsh" "zshrc")
 

@@ -5,8 +5,8 @@ local OS=$(uname)
 ###########
 # History #
 HISTFILE=$HOME/.histfile
-HISTSIZE=2000
-SAVEHIST=2000
+HISTSIZE=20000
+SAVEHIST=20000
 
 ############
 # Autoload #
@@ -41,7 +41,6 @@ if command -v nvim &> /dev/null; then
 	alias vimdiff='nvim -d $@'
 fi
 
-
 # git
 alias gl='git log --branches --remotes --oneline --graph --decorate'
 alias glw='git log --branches --remotes --oneline --graph --decorate --after $(date -v-7d +%Y-%m-%d)'
@@ -66,11 +65,14 @@ export EDITOR=nvim
 export LC_ALL=en_US.UTF-8
 export LANG="$LC_ALL"
 
+export GOHOME=/usr/lib/go-1.18
 export GOPATH=$HOME/p/go
 export GOBIN=$GOPATH/bin
 
-export PATH=$PATH:$GOBIN
+export PATH=/opt/firefox:$PATH
+export PATH=$PATH:$GOBIN:$GOHOME/bin
 export PATH=$PATH:$HOME/p/scripts
+export PATH=$PATH:$HOME/.npm/packages/bin
 
 ##########
 # Colors #
@@ -99,3 +101,7 @@ typeset -U fpath
 ##########
 # Prompt #
 source $HOME/.zsh/zsh-drt-prompt/drt-prompt.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

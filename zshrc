@@ -36,6 +36,12 @@ alias df='df -h'
 alias du='du -h'
 alias dus='du -hs'
 
+if command -v nvim &> /dev/null; then
+	alias vim='nvim'
+	alias vimdiff='nvim -d $@'
+fi
+
+
 # git
 alias gl='git log --branches --remotes --oneline --graph --decorate'
 alias glw='git log --branches --remotes --oneline --graph --decorate --after $(date -v-7d +%Y-%m-%d)'
@@ -53,12 +59,10 @@ alias open='xdg-open'
 alias psg='ps -ef | grep -i $1'
 alias ssg='ss -natp | grep -i $1'
 
-##################
-# Docker Aliases #
-alias fdroid='docker run --rm -u $(id -u):$(id -g) -v $(pwd):/repo registry.gitlab.com/fdroid/docker-executable-fdroidserver:latest'
-
 ###########
 # Exports #
+export PAGER=less
+export EDITOR=nvim
 export LC_ALL=en_US.UTF-8
 export LANG="$LC_ALL"
 

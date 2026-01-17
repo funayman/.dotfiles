@@ -59,7 +59,8 @@ prompt_build() {
   local SPACE=" "
 
   local promptsize=${#${(%):--[%n@%m]--$git_expand--}}
-  local pwdsize=${#${(%):-%~---}}
+  # local pwdsize=${#${(%):-%~---}}
+  local pwdsize=$(echo -n ${${(%):-%~---}} | wc -L)
 
   if [[ "$promptsize + $pwdsize" -gt $TERMWIDTH ]]; then
     ((PWDLEN=$TERMWIDTH - $promptsize - 4)) else
@@ -74,7 +75,7 @@ prompt_build() {
 function prompt_precmd() {
   INDEX=$(date "+%u")
   PROMPT="${BOLD_WHITE}╭─${BOLD_RED}[${BOLD_GREEN}%n${BOLD_WHITE}@${BOLD_GREEN}%m${BOLD_RED}] ${RESET}$(prompt_build)${RESET}${BOLD_WHITE}─╮
-╰─%%${RESET}%k%f "
+╰─%% ${RESET}%k%f"
 
   RPROMPT="${WHITE}%D{%Y}年%D{%m}月%D{%d}日（$KANJI_COLOR[$INDEX]$DAY_KANJI[$INDEX]${WHITE}）${RED}%D{%T}${BOLD_WHITE} ─╯${RESET}"
 }

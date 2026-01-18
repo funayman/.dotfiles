@@ -36,6 +36,10 @@ for FILE in ${FILES[@]}; do
   ln -s $HOME/.dotfiles/$FILE "$HOME/.$FILE"
 done;
 
+# neovim uses non-home location
+mkdir -p $HOME/.config 2>&1 > /dev/null || true
+ln -s $HOME/.dotfiles/nvim "$HOME/.config/nvim"
+
 ###
 # Make ZSH the default shell
 if [[ $(basename $SHELL) != 'zsh' ]]; then

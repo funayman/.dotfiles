@@ -35,11 +35,7 @@ alias less='less -r'
 alias df='df -h'
 alias du='du -h'
 alias dus='du -hs'
-
-if command -v nvim &> /dev/null; then
-	alias vim='nvim'
-	alias vimdiff='nvim -d $@'
-fi
+alias tmpdir='pushd $(mktemp -d) 2>&1 > /dev/null'
 
 # git
 alias gl='git log --branches --remotes --oneline --graph --decorate'
@@ -58,6 +54,13 @@ alias open='xdg-open'
 alias psg='ps -ef | grep -i $1'
 alias ssg='ss -natp | grep -i $1'
 
+# vim stuff
+if command -v nvim &> /dev/null; then
+	alias vim='nvim'
+	alias vimdiff='nvim -d $@'
+fi
+
+
 ###########
 # Exports #
 export PAGER=less
@@ -65,14 +68,11 @@ export EDITOR=nvim
 export LC_ALL=en_US.UTF-8
 export LANG="$LC_ALL"
 
-export GOHOME=/usr/lib/go-1.18
 export GOPATH=$HOME/p/go
 export GOBIN=$GOPATH/bin
 
-export PATH=/opt/firefox:$PATH
-export PATH=$PATH:$GOBIN:$GOHOME/bin
+export PATH=$PATH:$GOBIN
 export PATH=$PATH:$HOME/p/scripts
-export PATH=$PATH:$HOME/.npm/packages/bin
 
 ##########
 # Colors #

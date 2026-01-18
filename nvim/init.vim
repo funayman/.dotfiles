@@ -9,6 +9,7 @@ Plug 'itchyny/lightline.vim'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 set nocompatible                        "Apparently its necessary (https://stackoverflow.com/a/5845583)
@@ -80,7 +81,26 @@ vmap <leader>/ :TComment <CR>
 "lightline config
 let g:lightline = {
       \ 'colorscheme': 'deus',
+      \   'active': {
+      \     'left':[ [ 'mode', 'paste' ],
+      \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+      \     ]
+      \   },
+      \   'component': {
+      \     'lineinfo': ' %3l:%-2v',
+      \   },
+      \   'component_function': {
+      \     'gitbranch': 'FugitiveHead',
+      \   }
       \ }
+
+let g:lightline.separator = {
+      \   'left': '', 'right': ''
+      \}
+
+let g:lightline.subseparator = {
+      \   'left': '', 'right': '' 
+      \}
 
 "nerdtree config
 map <C-n> :NERDTreeToggle<CR>

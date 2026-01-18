@@ -35,7 +35,7 @@ alias less='less -r'
 alias df='df -h'
 alias du='du -h'
 alias dus='du -hs'
-alias tmpdir='pushd $(mktemp -d) 2>&1 > /dev/null'
+alias tmpdir='pushd `mktemp -d` 2>&1 > /dev/null'
 
 # git
 alias gl='git log --branches --remotes --oneline --graph --decorate'

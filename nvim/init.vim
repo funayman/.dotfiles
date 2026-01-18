@@ -1,5 +1,5 @@
 " plugin support through vim-plug
-execute plug#begin()
+execute plug#begin("~/.vim/plugged")
 Plug 'kadekillary/Turtles'
 Plug 'dracula/vim'
 

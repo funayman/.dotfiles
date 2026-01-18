@@ -6,7 +6,7 @@ set -e
 OS=$(uname)
 declare -a PRGMS=("zsh" "git" "wget" "curl" "ffmpeg" "mpv" "neovim" "tmux" "tree" "yt-dlp")
 declare -a DIRS=("p/go/{src,pkg,bin}" "p/scripts")
-declare -a FILES=("tmux.conf" "vim" "vimrc" "zsh" "zshrc")
+declare -a FILES=("tmux.conf" "vim" "zsh" "zshrc")
 
 ###
 # Directory Setup
@@ -70,9 +70,10 @@ for FILE in ${FILES[@]}; do
   ln -s $HOME/.dotfiles/$FILE "$HOME/.$FILE"
 done;
 
-# neovim uses non-home location
+# neovim uses non-home location; but merge w/ vim
 mkdir -p $HOME/.config 2>&1 > /dev/null || true
 ln -s $HOME/.dotfiles/nvim "$HOME/.config/nvim"
+ln -s $HOME/.dotfiles/nvim/init.vim "$HOME/.vimrc"
 
 ###
 # Make ZSH the default shell

@@ -4,7 +4,7 @@ set -e
 ###
 # Constants
 OS=$(uname)
-declare -a PRGMS=("zsh" "git" "wget" "curl" "ffmpeg" "mpv" "neovim" "tmux" "tree" "ydlp")
+declare -a PRGMS=("zsh" "git" "wget" "curl" "ffmpeg" "mpv" "neovim" "tmux" "tree" "yt-dlp")
 declare -a DIRS=("p/go/{src,pkg,bin}" "p/scripts")
 declare -a FILES=("tmux.conf" "vim" "vimrc" "zsh" "zshrc")
 
@@ -25,6 +25,40 @@ if [ ! -d $HOME/.dotfiles  ]; then
 fi
 cd $HOME/.dotfiles
 git submodule init && git submodule update
+
+###
+# Install pkgs
+source /etc/os-release
+case $ID in
+  debian|ubuntu|mint)
+    PKG_MGR="sudo apt install"
+    ;;
+
+  endeavouros|arch)
+    PKG_MGR="sudo pacman -Syy"
+    if command -v yay 1>&2 > /dev/null; then
+      PKG_MGR="yay -Syy"
+    fi
+    ;;
+
+  fedora)
+    PKG_MGR="sudo dnf install"
+    ;;
+
+  rhel|centos)
+    PKG_MGR="sudo yum install"
+    ;;
+
+  *)
+    echo "unable to find a sutible package manager... skipping"
+    ;;
+esac
+
+if [[ ! -z $PKG_MGR ]]; then
+  echo "${PKG_MGR} ${PRGMS[@]}"
+  echo "installing packages..."
+  eval "${PKG_MGR} ${PRGMS[@]}"
+fi
 
 ###
 # Symlink it all together ^^

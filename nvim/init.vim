@@ -21,7 +21,7 @@ colorscheme turtles
 
 filetype plugin on                      "Enables filetype plugins
 filetype plugin indent on               "Indents based on filetypes
-set omnifunc=syntaxcomplete#Complete	"does something; i assume for vim-go
+set omnifunc=syntaxcomplete#Complete    "does something; i assume for vim-go
 
 set undofile                            "Allow for undoing AFTER a file is :wq
 set undodir=$HOME/.vim/undo             "Dir used for undo

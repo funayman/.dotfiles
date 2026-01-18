@@ -4,8 +4,9 @@ Plug 'kadekillary/Turtles'
 Plug 'dracula/vim'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'tomtom/tcomment_vim'
 call plug#end()
@@ -26,6 +27,7 @@ set omnifunc=syntaxcomplete#Complete    "does something; i assume for vim-go
 set undofile                            "Allow for undoing AFTER a file is :wq
 set undodir=$HOME/.vim/undo             "Dir used for undo
 
+set noshowmode                          "Removes the --INSERT-- from showing; not needed with lightline
 set wildmenu                            "Menu tab-completion on the command line
 set number                              "Display line numbers
 set ruler                               "Always show current position
@@ -60,20 +62,25 @@ let g:go_code_completion_enabled = 1
 au Filetype go nnoremap <leader>gr :GoRun %<CR>
 
 "vim-airline config
-let g:airline_theme = 'turtles'
-let g:airline_powerline_fonts = 1                       "displays arrows, terminal must have a powerline font
-let g:airline#extensions#tabline#enabled = 1            "automatically display all buffers (even one tab)
-let g:airline#extensions#tabline#formatter = 'default'
+"let g:airline_theme = 'turtles'
+"let g:airline_powerline_fonts = 1                       "displays arrows, terminal must have a powerline font
+"let g:airline#extensions#tabline#enabled = 1            "automatically display all buffers (even one tab)
+"let g:airline#extensions#tabline#formatter = 'default'
+
 
 "a few quick cuts custom mapping using ','
 let mapleader=","
 nmap <leader>p :set paste! <CR> :set nu! <CR>
-nmap <leader>nn :set nu! <CR>
+nmap <leader>n :set nu! <CR>
 nmap <leader>w :w! <CR>
 nmap <leader>/ :TComment <CR>
 
-"tagbar config
-nmap <F8> :TagbarToggle<CR>
+vmap <leader>/ :TComment <CR>
+
+"lightline config
+let g:lightline = {
+      \ 'colorscheme': 'deus',
+      \ }
 
 "nerdtree config
 map <C-n> :NERDTreeToggle<CR>

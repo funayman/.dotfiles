@@ -25,6 +25,10 @@ KANJI_COLOR=(${BOLD_WHITE} ${BOLD_RED} ${BOLD_BLUE} ${BOLD_GREEN} ${BOLD_YELLOW}
 # Display when connected to SSH
 SSH_PROMPT_RAW="SSH:"
 SSH_PROMPT="${RESET}${BOLD_WHITE}${SSH_PROMPT_RAW}${RESET}"
+_PS1="%% "
+if [[ -n "$SSH_CONNECTION" ]]; then
+  _PS1="(SSH)>${_PS1}"
+fi
 
 prompt_build() {
   vcs_info
@@ -63,10 +67,6 @@ prompt_build() {
   local SPACE=" "
 
   local promptsize=${#${(%):--[%n@%m]--$git_expand--}}
-  if [[ -n "$SSH_CONNECTION" ]]; then
-    # accounts for SSH_PROMPT
-    (( promptsize = promptsize + ${#SSH_PROMPT_RAW} ))
-  fi
   # local pwdsize=${#${(%):-%~---}}
   local pwdsize=$(echo -n ${${(%):-%~---}} | wc -L)
 
@@ -82,12 +82,9 @@ prompt_build() {
 
 function prompt_precmd() {
   USER_CONN="${BOLD_GREEN}%n${BOLD_WHITE}@${BOLD_GREEN}%m${BOLD_RED}"
-  if [[ -n "$SSH_CONNECTION" ]]; then
-    USER_CONN="${SSH_PROMPT}${USER_CONN}"
-  fi
   INDEX=$(date "+%u")
   PROMPT="${BOLD_WHITE}╭─${BOLD_RED}[${USER_CONN}] ${RESET}$(prompt_build)${RESET}${BOLD_WHITE}─╮
-╰─%% ${RESET}%k%f"
+╰─${_PS1}${RESET}%k%f"
 
   RPROMPT="${WHITE}%D{%Y}年%D{%m}月%D{%d}日（$KANJI_COLOR[$INDEX]$DAY_KANJI[$INDEX]${WHITE}）${RED}%D{%T}${BOLD_WHITE} ─╯${RESET}"
 }

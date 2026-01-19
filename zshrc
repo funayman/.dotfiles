@@ -93,6 +93,8 @@ source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 # zsh-history-substring-search fix
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
 # zsh-completions
 fpath=($HOME/.zsh/zsh-completions $fpath)
 fpath=($fpath $HOME/.zsh/func)

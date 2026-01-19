@@ -22,6 +22,10 @@ GEAR="\u2699"
 DAY_KANJI=('月' '火' '水' '木' '金' '土' '日')
 KANJI_COLOR=(${BOLD_WHITE} ${BOLD_RED} ${BOLD_BLUE} ${BOLD_GREEN} ${BOLD_YELLOW} ${BOLD_CYAN} ${BOLD_MAGENTA})
 
+# Display when connected to SSH
+SSH_PROMPT_RAW="SSH:"
+SSH_PROMPT="${RESET}${BOLD_WHITE}${SSH_PROMPT_RAW}${RESET}"
+
 prompt_build() {
   vcs_info
   local TERMWIDTH
@@ -48,8 +52,8 @@ prompt_build() {
     else
       ref="${ref/.../} $DETACHED"
     fi
-    local git_expand="$(print $SEGMENT_SEPARATOR${ref})"
-    GIT_DISPLAY="%f%F{$color}$SEGMENT_SEPARATOR%f%F{black}%k%K{$color}${ref}"
+    local git_expand="$(print ${SEGMENT_SEPARATOR}${ref})"
+    GIT_DISPLAY="%f%F{$color}${SEGMENT_SEPARATOR}%f%F{black}%k%K{$color}${ref}"
   fi
 
   ##
@@ -59,6 +63,10 @@ prompt_build() {
   local SPACE=" "
 
   local promptsize=${#${(%):--[%n@%m]--$git_expand--}}
+  if [[ -n "$SSH_CONNECTION" ]]; then
+    # accounts for SSH_PROMPT
+    (( promptsize = promptsize + ${#SSH_PROMPT_RAW} ))
+  fi
   # local pwdsize=${#${(%):-%~---}}
   local pwdsize=$(echo -n ${${(%):-%~---}} | wc -L)
 
@@ -67,14 +75,18 @@ prompt_build() {
     FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize) - 1))..${SPACE}.)}"
   fi
 
-  PDISPLAY="${(e)FILLBAR}$GIT_DISPLAY %f%F{blue}$SEGMENT_SEPARATOR%f${BOLD_WHITE}%k%K{blue} %$PWDLEN<...<%~%<< "
+  PDISPLAY="${(e)FILLBAR}$GIT_DISPLAY %f%F{blue}${SEGMENT_SEPARATOR}%f${BOLD_WHITE}%k%K{blue} %$PWDLEN<...<%~%<< "
 
   print -n "${PDISPLAY}"
 }
 
 function prompt_precmd() {
+  USER_CONN="${BOLD_GREEN}%n${BOLD_WHITE}@${BOLD_GREEN}%m${BOLD_RED}"
+  if [[ -n "$SSH_CONNECTION" ]]; then
+    USER_CONN="${SSH_PROMPT}${USER_CONN}"
+  fi
   INDEX=$(date "+%u")
-  PROMPT="${BOLD_WHITE}╭─${BOLD_RED}[${BOLD_GREEN}%n${BOLD_WHITE}@${BOLD_GREEN}%m${BOLD_RED}] ${RESET}$(prompt_build)${RESET}${BOLD_WHITE}─╮
+  PROMPT="${BOLD_WHITE}╭─${BOLD_RED}[${USER_CONN}] ${RESET}$(prompt_build)${RESET}${BOLD_WHITE}─╮
 ╰─%% ${RESET}%k%f"
 
   RPROMPT="${WHITE}%D{%Y}年%D{%m}月%D{%d}日（$KANJI_COLOR[$INDEX]$DAY_KANJI[$INDEX]${WHITE}）${RED}%D{%T}${BOLD_WHITE} ─╯${RESET}"

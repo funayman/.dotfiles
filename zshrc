@@ -46,9 +46,14 @@ alias gs='git status'
 alias ga='git add'
 
 # macOS-like
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
-alias open='xdg-open'
+if [ $XDG_SESSION_TYPE = 'X11' ]; then
+  alias pbcopy='xclip -selection clipboard'
+  alias pbpaste='xclip -selection clipboard -o'
+  alias open='xdg-open'
+elif [ $XDG_SESSION_TYPE = 'wayland' ];then
+  alias pbcopy='wl-copy'
+  alias pbpaste='wl-paste'
+fi
 
 # networking help (cyber plumber)
 alias psg='ps -ef | grep -i $1'
